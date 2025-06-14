@@ -148,60 +148,95 @@ header h3 {
 }
 
 /* صفحة تسجيل الدخول (#loginContainer) */
-#loginContainer {
-    max-width: 800px;
-    margin: 80px auto;
-    padding: 70px;
-    background: rgba(31, 41, 55, 0.95);
-    border-radius: 20px;
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
-    text-align: center;
+@media (max-width: 768px) {
+    #loginContainer {
+        max-width: 90%;
+        padding: 30px;
+        margin: 30px auto;
+    }
+
+    #loginContainer h2 {
+        font-size: 2rem; /* خط كبير على الموبايل */
+    }
+
+    #loginContainer .form-group input {
+        padding: 12px;
+        font-size: 1.3rem; /* خط كبير */
+    }
+
+    #loginContainer .form-group label {
+        font-size: 1.3rem; /* خط كبير */
+    }
+
+    #loginContainer .btn {
+        padding: 12px 25px;
+        font-size: 1.3rem; /* خط كبير */
+    }
+
+    #user-info {
+        max-width: 90%;
+        padding: 30px;
+        margin: 20px auto;
+    }
+
+    #user-info h2 {
+        font-size: 2rem; /* خط كبير على الموبايل */
+    }
+
+    #user-info .form-group input,
+    #user-info .form-group select {
+        padding: 12px;
+        font-size: 1.3rem; /* خط كبير */
+    }
+
+    #user-info .form-group label {
+        font-size: 1.3rem; /* خط كبير */
+    }
 }
 
-#loginContainer h2 {
-    font-size: 2.6rem;
-    color: #60a5fa;
-    margin-bottom: 35px;
-}
+@media (max-width: 360px) {
+    #loginContainer {
+        padding: 20px;
+        margin: 20px auto;
+    }
 
-#loginContainer .form-group {
-    margin-bottom: 40px;
-}
+    #loginContainer h2 {
+        font-size: 1.8rem;
+    }
 
-#loginContainer .form-group label {
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: #e5e7eb;
-    margin-bottom: 18px;
-}
+    #loginContainer .form-group input {
+        padding: 10px;
+        font-size: 1.2rem;
+    }
 
-#loginContainer .form-group input {
-    padding: 20px;
-    font-size: 1.4rem;
-    border: 1px solid #4b5563;
-    border-radius: 10px;
-    background: #1f2937;
-    color: #e5e7eb;
-}
+    #loginContainer .form-group label {
+        font-size: 1.2rem;
+    }
 
-#loginContainer .form-group input:focus {
-    border-color: #2563eb;
-    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
-}
+    #loginContainer .btn {
+        padding: 10px 20px;
+        font-size: 1.2rem;
+    }
 
-#loginContainer .btn {
-    padding: 20px 40px;
-    font-size: 1.4rem;
-    border-radius: 10px;
-    background: #2563eb;
-    transition: background 0.3s, box-shadow 0.3s;
-}
+    #user-info {
+        padding: 20px;
+        margin: 15px auto;
+    }
 
-#loginContainer .btn:hover {
-    background: #1e40af;
-    box-shadow: 0 0 20px rgba(37, 99, 235, 0.5);
-}
+    #user-info h2 {
+        font-size: 1.8rem;
+    }
 
+    #user-info .form-group input,
+    #user-info .form-group select {
+        padding: 10px;
+        font-size: 1.2rem;
+    }
+
+    #user-info .form-group label {
+        font-size: 1.2rem;
+    }
+}
 /* قوائم الوجبات */
 .meal-options {
     margin-top: 20px;
