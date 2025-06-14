@@ -67,12 +67,12 @@ header h1 {
 }
 
 header h3 {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-weight: 400;
     opacity: 0.9;
     max-width: 800px;
     margin: 0 auto;
-    line-height: 1.6;
+    line-height: 1.4;
 }
 
 /* أقسام عامة */
@@ -105,7 +105,7 @@ header h3 {
 
 /* صفحة إدخال البيانات (#user-info) */
 #user-info {
-    max-width: 1300px;
+    max-width: 1000x;
     margin: 60px auto;
     padding: 60px;
     background: rgba(31, 41, 55, 0.95);
@@ -114,7 +114,7 @@ header h3 {
 }
 
 #user-info h2 {
-    font-size: 2.4rem;
+    font-size: 2.3rem;
     text-align: center;
     color: #60a5fa;
     margin-bottom: 30px;
