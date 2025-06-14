@@ -1,0 +1,474 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Fitness Program</title>
+    <meta name="keywords" content="fitnessPlan, fitness, gym, calories">
+    <meta name="author" content="Omar Ahmed">
+    <!-- أيقونة الموقع (غير المسار حسب موقعك) -->
+    <link rel="shortcut icon" type="image/jpg" href="gymicon.jpg">
+    <!-- Normalize.css لتوحيد الأنماط عبر البراوزرات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifkj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Font Awesome للأيقونات -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Particles.js -->
+    <link rel="shortcut icon" type="image/jpg" href="D:\html projects\تجربه فاشله\gymicon.jpg">
+   <link rel="stylesheet" href="D:\CSS PROJECTS\styles\style.css">
+        
+</head>
+<body>
+    <div class="container table-responsive">
+        <div class="container" id="languageContainer">
+            <h2>Select Language / اختر اللغة</h2>
+            <div class="language-select">
+                <label><input type="radio" name="language" value="en" checked> English</label>
+                <label><input type="radio" name="language" value="ar"> العربية</label>
+            </div>
+            <button class="btn" onclick="setLanguage()">Continue</button>
+        </div>
+
+        <div class="container hidden" id="accountChoiceContainer">
+            <div class="section">
+                <h2 id="accountChoiceTitle">Account Options</h2>
+                <div class="form-group">
+                    
+                    <div class="radio-group">
+                        <button class="btn" id="hasAccountBtn">تسجيل الدخول / Sign in </button>
+                        <button class="btn" id="noAccountBtn">انشاء حساب / Sign up</button>
+                    </div>
+                </div>
+                <div id="message"></div>
+            </div>
+        </div>
+
+        <div class="container hidden" id="loginContainer">
+            <div class="section">
+                <h2 id="loginTitle">Login</h2>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label id="loginEmailLabel">Email / البريد الإلكتروني</label>
+                        <input type="email" id="loginEmail" required>
+                        <div class="error" id="loginError">Email not found / البريد غير موجود</div>
+                    </div>
+                    <div class="form-group">
+                        <label id="loginPasswordLabel">Password / كلمة المرور</label>
+                        <input type="password" id="loginPassword" required>
+                    </div>
+                    <button type="submit" class="btn">Login / تسجيل الدخول</button>
+                </form>
+                <div id="message"></div>
+            </div>
+        </div>
+
+        <div class="container hidden" id="registrationContainer">
+            <div class="section">
+                <h2 id="regTitle">Register</h2>
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label id="emailLabel">Email / البريد الإلكتروني</label>
+                        <input type="email" id="regEmail" required>
+                        <div class="error" id="emailError">This email is already registered / هذا البريد مسجل مسبقًا</div>
+                    </div>
+                    <div class="form-group">
+                        <label id="passwordLabel">Password / كلمة المرور</label>
+                        <input type="password" id="regPassword" required>
+                    </div>
+                    <button type="submit" class="btn">Register / تسجيل</button>
+                </form>
+                <div id="message"></div>
+            </div>
+        </div>
+
+        <header id="mainHeader" class="hidden">
+            <h1>Welcome to the Fitness Program</h1>
+            <h3>This is your complete guide to your diet and workouts</h3>
+        </header>
+
+        <div id="user-info" class="section hidden">
+            <h2 id="infoTitle">Basic Information</h2>
+            <form id="userForm">
+                <div class="form-group">
+                    <label id="nameLabel">Your Name:</label>
+                    <input type="text" id="userName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label id="genderLabel">Gender:</label>
+                    <div class="radio-group">
+                        <input type="radio" id="male" name="gender" value="male" required><label for="male">Male</label>
+                        <input type="radio" id="female" name="gender" value="female"><label for="female">Female</label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label id="weightLabel">Weight (kg):</label>
+                    <input type="number" id="weight" step="0.1" required>
+                </div>
+                
+                <div class="form-group">
+                    <label id="heightLabel">Height (cm):</label>
+                    <input type="number" id="height" step="0.1" required>
+                </div>
+                
+                <div class="form-group">
+                    <label id="ageLabel">Age:</label>
+                    <input type="number" id="age" required>
+                </div>
+                
+                <div class="form-group">
+                    <label id="activityLabel">Activity Level:</label>
+                    <select id="activityLevel" required>
+                        <option value="1">Sedentary: Little or no exercise</option>
+                        <option value="2">Light: Light exercise or sports 1-3 days/week</option>
+                        <option value="3">Moderate: Moderate exercise or sports 3-5 days/week</option>
+                        <option value="4">Active: Hard exercise or sports 6-7 days/week</option>
+                        <option value="5">Very Active: Very hard exercise, physical job, or training twice/day</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label id="goalLabel">Goal:</label>
+                    <select id="goal" required>
+                        <option value="1">Weight Gain</option>
+                        <option value="2">Weight Loss</option>
+                        <option value="3">Maintain Weight</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label id="fatLabel">Body Fat Percentage (%):</label>
+                    <input type="number" id="fatPercentage" min="0" max="100" required>
+                </div>
+                
+                <div class="form-group">
+                    <label id="waterLabel">Body Water Percentage (%):</label>
+                    <input type="number" id="waterPercentage" min="0" max="100" required>
+                </div>
+                
+                <div class="form-group">
+                    <label id="planLabel">Choose Your Plan:</label>
+                    <div class="radio-group">
+                        <input type="radio" id="foodPlan" name="planType" value="1" required><label for="foodPlan">Diet Plan Only</label>
+                        <input type="radio" id="fitnessPlan" name="planType" value="2"><label for="fitnessPlan">Workout Plan Only</label>
+                        <input type="radio" id="bothPlans" name="planType" value="3"><label for="bothPlans">Both Plans</label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label id="supplementsLabel">Do You Want Supplements?</label>
+                    <div class="radio-group">
+                        <input type="radio" id="yesSupplements" name="supplements" value="yes" required><label for="yesSupplements">Yes</label>
+                        <input type="radio" id="noSupplements" name="supplements" value="no"><label for="noSupplements">No</label>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn">Calculate My Needs / احسب احتياجاتي</button>
+            </form>
+        </div>
+
+        <div id="results" class="section hidden">
+            <h2 id="resultsTitle">Results</h2>
+            <div id="requirements" class="hidden">
+                <h3 id="needsTitle">Your Daily Needs:</h3>
+                <div class="results-grid">
+                    <div class="result-item">
+                        <span class="result-label">Calories:</span>
+                        <span id="caloriesResult" class="result-value">0</span> kcal
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Protein:</span>
+                        <span id="proteinResult" class="result-value">0</span> g
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Fat:</span>
+                        <span id="fatResult" class="result-value">0</span> g
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Carbs:</span>
+                        <span id="carbsResult" class="result-value">0</span> g
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Water:</span>
+                        <span id="waterResult" class="result-value">0</span> ml
+                    </div>
+                </div>
+            </div>
+
+            <div class="meal-section" id="breakfastSection">
+                <h3>Breakfast</h3>
+                <div class="meal-options">
+                    <div class="meal-category">
+                        <h4>Meat and Proteins</h4>
+                        <input type="search" class="search-bar" placeholder="Search for meat..." oninput="filterMeals('breakfast', 'meats')">
+                        <div class="meal-item" data-category="meats">Grilled Eggs (155 kcal, 13g protein) <input type="number" id="meal-breakfast-meats-0-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="meats">Boiled Eggs (140 kcal, 12g protein) <input type="number" id="meal-breakfast-meats-1-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="meats">Smoked Salmon (180 kcal, 20g protein) <input type="number" id="meal-breakfast-meats-2-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="meats">Fried Eggs (180 kcal, 14g protein) <input type="number" id="meal-breakfast-meats-3-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="meats">Eggs with Thyme (160 kcal, 13g protein) <input type="number" id="meal-breakfast-meats-4-weight" min="0" placeholder="Amount (g)"></div>
+                    </div>
+                    <div class="meal-category">
+                        <h4>Bakery Items</h4>
+                        <input type="search" class="search-bar" placeholder="Search for bakery..." oninput="filterMeals('breakfast', 'bakery')">
+                        <div class="meal-item" data-category="bakery">Brown Bread (120 kcal, 4g protein) <input type="number" id="meal-breakfast-bakery-0-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="bakery">Cheese Toast (200 kcal, 8g protein) <input type="number" id="meal-breakfast-bakery-1-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="bakery">Honey on Bread (180 kcal, 2g protein) <input type="number" id="meal-breakfast-bakery-2-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="bakery">Avocado on Toast (250 kcal, 4g protein) <input type="number" id="meal-breakfast-bakery-3-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="bakery">Bread with Tahini (200 kcal, 6g protein) <input type="number" id="meal-breakfast-bakery-4-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="bakery">Sesame Bread (140 kcal, 5g protein) <input type="number" id="meal-breakfast-bakery-5-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="bakery">Pita Bread (120 kcal, 4g protein) <input type="number" id="meal-breakfast-bakery-6-weight" min="0" placeholder="Amount (g)"></div>
+                    </div>
+                    <div class="meal-category">
+                        <h4>Legumes and Starches</h4>
+                        <input type="search" class="search-bar" placeholder="Search for legumes..." oninput="filterMeals('breakfast', 'legumes')">
+                        <div class="meal-item" data-category="legumes">Oatmeal with Milk (150 kcal, 5g protein) <input type="number" id="meal-breakfast-legumes-0-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="legumes">Fava Beans (130 kcal, 5g protein) <input type="number" id="meal-breakfast-legumes-1-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="legumes">Rice Cakes (110 kcal, 2g protein) <input type="number" id="meal-breakfast-legumes-2-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="legumes">Oatmeal with Banana (180 kcal, 6g protein) <input type="number" id="meal-breakfast-legumes-3-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="legumes">Oatmeal with Honey (160 kcal, 4g protein) <input type="number" id="meal-breakfast-legumes-4-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="legumes">Oatmeal with Nuts (220 kcal, 7g protein) <input type="number" id="meal-breakfast-legumes-5-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="legumes">Yogurt with Oatmeal (170 kcal, 8g protein) <input type="number" id="meal-breakfast-legumes-6-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="legumes">Fava with Oil (150 kcal, 6g protein) <input type="number" id="meal-breakfast-legumes-7-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="legumes">Fava with Garlic (160 kcal, 7g protein) <input type="number" id="meal-breakfast-legumes-8-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="legumes">Fava with Tahini (170 kcal, 8g protein) <input type="number" id="meal-breakfast-legumes-9-weight" min="0" placeholder="Amount (g)"></div>
+                    </div>
+                    <div class="meal-category">
+                        <h4>Dairy and Derivatives</h4>
+                        <input type="search" class="search-bar" placeholder="Search for dairy..." oninput="filterMeals('breakfast', 'dairy')">
+                        <div class="meal-item" data-category="dairy">Low-Fat Milk (120 kcal, 8g protein) <input type="number" id="meal-breakfast-dairy-0-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="dairy">Greek Yogurt (100 kcal, 10g protein) <input type="number" id="meal-breakfast-dairy-1-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="dairy">White Cheese (50 kcal, 3g protein) <input type="number" id="meal-breakfast-dairy-2-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="dairy">Cream Cheese (90 kcal, 2g protein) <input type="number" id="meal-breakfast-dairy-3-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="dairy">Yogurt with Fruits (150 kcal, 7g protein) <input type="number" id="meal-breakfast-dairy-4-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="dairy">Yogurt with Nuts (200 kcal, 9g protein) <input type="number" id="meal-breakfast-dairy-5-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="dairy">Yogurt with Honey (140 kcal, 6g protein) <input type="number" id="meal-breakfast-dairy-6-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="dairy">Cheese with Honey (130 kcal, 5g protein) <input type="number" id="meal-breakfast-dairy-7-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="dairy">Dates with Cheese (220 kcal, 6g protein) <input type="number" id="meal-breakfast-dairy-8-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="dairy">Dutch Cheese (110 kcal, 7g protein) <input type="number" id="meal-breakfast-dairy-9-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="dairy">Romano Cheese (120 kcal, 9g protein) <input type="number" id="meal-breakfast-dairy-10-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="dairy">Coconut Milk (140 kcal, 1g protein) <input type="number" id="meal-breakfast-dairy-11-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="dairy">Almond Milk (90 kcal, 1g protein) <input type="number" id="meal-breakfast-dairy-12-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="dairy">Soy Milk (100 kcal, 3g protein) <input type="number" id="meal-breakfast-dairy-13-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="dairy">Oat Milk (110 kcal, 2g protein) <input type="number" id="meal-breakfast-dairy-14-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="dairy">Banana with Milk (150 kcal, 5g protein) <input type="number" id="meal-breakfast-dairy-15-weight" min="0" placeholder="Amount (g)"></div>
+                    </div>
+                    <div class="meal-category">
+                        <h4>Fruits</h4>
+                        <input type="search" class="search-bar" placeholder="Search for fruits..." oninput="filterMeals('breakfast', 'fruits')">
+                        <div class="meal-item" data-category="fruits">Banana (90 kcal, 1.2g protein) <input type="number" id="meal-breakfast-fruits-0-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="fruits">Apple (52 kcal, 0.3g protein) <input type="number" id="meal-breakfast-fruits-1-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="fruits">Orange (60 kcal, 1g protein) <input type="number" id="meal-breakfast-fruits-2-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="fruits">Dates (130 kcal, 1g protein) <input type="number" id="meal-breakfast-fruits-3-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="fruits">Dried Dates (140 kcal, 2g protein) <input type="number" id="meal-breakfast-fruits-4-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="fruits">Dried Figs (110 kcal, 1g protein) <input type="number" id="meal-breakfast-fruits-5-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="fruits">Baked Apple (95 kcal, 0.5g protein) <input type="number" id="meal-breakfast-fruits-6-weight" min="0" placeholder="Amount (g)"></div>
+                    </div>
+                    <div class="meal-category">
+                        <h4>Beverages</h4>
+                        <input type="search" class="search-bar" placeholder="Search for beverages..." oninput="filterMeals('breakfast', 'beverages')">
+                        <div class="meal-item" data-category="beverages">Low-Fat Milk (120 kcal, 8g protein) <input type="number" id="meal-breakfast-beverages-0-weight" min="0" placeholder="Amount (ml)"></div>
+                        <div class="meal-item" data-category="beverages">Coconut Milk (140 kcal, 1g protein) <input type="number" id="meal-breakfast-beverages-1-weight" min="0" placeholder="Amount (ml)"></div>
+                        <div class="meal-item" data-category="beverages">Almond Milk (90 kcal, 1g protein) <input type="number" id="meal-breakfast-beverages-2-weight" min="0" placeholder="Amount (ml)"></div>
+                        <div class="meal-item" data-category="beverages">Soy Milk (100 kcal, 3g protein) <input type="number" id="meal-breakfast-beverages-3-weight" min="0" placeholder="Amount (ml)"></div>
+                        <div class="meal-item" data-category="beverages">Oat Milk (110 kcal, 2g protein) <input type="number" id="meal-breakfast-beverages-4-weight" min="0" placeholder="Amount (ml)"></div>
+                        <div class="meal-item" data-category="beverages">Banana with Milk (150 kcal, 5g protein) <input type="number" id="meal-breakfast-beverages-5-weight" min="0" placeholder="Amount (ml)"></div>
+                    </div>
+                    <button class="btn meal-btn" data-meal="breakfast">Select Breakfast</button>
+                    <p>Remaining Calories: <span id="remainingCaloriesBreakfast">0</span> kcal</p>
+                </div>
+            </div>
+
+            <div class="meal-section" id="lunchSection">
+                <h3>Lunch</h3>
+                <div class="meal-options">
+                    <div class="meal-category">
+                        <h4>Meat and Proteins</h4>
+                        <input type="search" class="search-bar" placeholder="Search for meat..." oninput="filterMeals('lunch', 'meats')">
+                        <div class="meal-item" data-category="meats">Grilled Chicken Breast (165 kcal, 31g protein) <input type="number" id="meal-lunch-meats-0-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="meats">Grilled Fish (200 kcal, 25g protein) <input type="number" id="meal-lunch-meats-1-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="meats">Beef Steak (300 kcal, 28g protein) <input type="number" id="meal-lunch-meats-2-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="meats">Lamb Meat (300 kcal, 25g protein) <input type="number" id="meal-lunch-meats-3-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="meats">Chicken Curry (250 kcal, 25g protein) <input type="number" id="meal-lunch-meats-4-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="meats">Tuna Salad (180 kcal, 20g protein) <input type="number" id="meal-lunch-meats-5-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="meats">Salmon (250 kcal, 23g protein) <input type="number" id="meal-lunch-meats-6-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="meats">Chicken with Thyme (200 kcal, 28g protein) <input type="number" id="meal-lunch-meats-7-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="meats">Oven-Grilled Chicken (240 kcal, 27g protein) <input type="number" id="meal-lunch-meats-8-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="meats">Chicken with Olives (230 kcal, 27g protein) <input type="number" id="meal-lunch-meats-9-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="meats">Fish with Lemon (180 kcal, 22g protein) <input type="number" id="meal-lunch-meats-10-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="meats">Meat with Sauce (280 kcal, 26g protein) <input type="number" id="meal-lunch-meats-11-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="meats">Chicken with Cumin (220 kcal, 26g protein) <input type="number" id="meal-lunch-meats-12-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="meats">Spiced Fish (210 kcal, 24g protein) <input type="number" id="meal-lunch-meats-13-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="meats">Steak with Pepper (320 kcal, 29g protein) <input type="number" id="meal-lunch-meats-14-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="meats">Chicken Steak (180 kcal, 30g protein) <input type="number" id="meal-lunch-meats-15-weight" min="0" placeholder="Amount (g)"></div>
+                    </div>
+                    <div class="meal-category">
+                        <h4>Bakery Items</h4>
+                        <input type="search" class="search-bar" placeholder="Search for bakery..." oninput="filterMeals('lunch', 'bakery')">
+                        <div class="meal-item" data-category="bakery">Pasta with Sauce (180 kcal, 6g protein) <input type="number" id="meal-lunch-bakery-0-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="bakery">Pasta with Cheese (220 kcal, 8g protein) <input type="number" id="meal-lunch-bakery-1-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="bakery">Syrian Bread (200 kcal, 6g protein) <input type="number" id="meal-lunch-bakery-2-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="bakery">Pasta with Béchamel (250 kcal, 7g protein) <input type="number" id="meal-lunch-bakery-3-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="bakery">Pasta with Meat (250 kcal, 15g protein) <input type="number" id="meal-lunch-bakery-4-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="bakery">Pasta with Veggies (160 kcal, 5g protein) <input type="number" id="meal-lunch-bakery-5-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="bakery">Pasta with Parsley (170 kcal, 6g protein) <input type="number" id="meal-lunch-bakery-6-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="bakery">Thyme Bread (180 kcal, 5g protein) <input type="number" id="meal-lunch-bakery-7-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="bakery">Garlic Bread (190 kcal, 5g protein) <input type="number" id="meal-lunch-bakery-8-weight" min="0" placeholder="Amount (g)"></div>
+                    </div>
+                    <div class="meal-category">
+                        <h4>Legumes and Starches</h4>
+                        <input type="search" class="search-bar" placeholder="Search for legumes..." oninput="filterMeals('lunch', 'legumes')">
+                        <div class="meal-item" data-category="legumes">White Rice (130 kcal, 2.7g protein) <input type="number" id="meal-lunch-legumes-0-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="legumes">Quinoa (120 kcal, 4g protein) <input type="number" id="meal-lunch-legumes-1-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="legumes">Cooked Lentils (115 kcal, 9g protein) <input type="number" id="meal-lunch-legumes-2-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="legumes">Baked Potatoes (130 kcal, 2g protein) <input type="number" id="meal-lunch-legumes-3-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="legumes">Rice with Veggies (150 kcal, 3g protein) <input type="number" id="meal-lunch-legumes-4-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="legumes">Rice with Raisins (170 kcal, 3g protein) <input type="number" id="meal-lunch-legumes-5-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="legumes">Rice with Soy (140 kcal, 4g protein) <input type="number" id="meal-lunch-legumes-6-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="legumes">Quinoa with Veggies (160 kcal, 5g protein) <input type="number" id="meal-lunch-legumes-7-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="legumes">Quinoa Salad (120 kcal, 5g protein) <input type="number" id="meal-lunch-legumes-8-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="legumes">Quinoa with Chicken (220 kcal, 25g protein) <input type="number" id="meal-lunch-legumes-9-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="legumes">Quinoa with Parsley (140 kcal, 5g protein) <input type="number" id="meal-lunch-legumes-10-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="legumes">Lentils with Rice (160 kcal, 8g protein) <input type="number" id="meal-lunch-legumes-11-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="legumes">Lentils with Oil (170 kcal, 9g protein) <input type="number" id="meal-lunch-legumes-12-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="legumes">Potatoes with Butter (180 kcal, 2g protein) <input type="number" id="meal-lunch-legumes-13-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="legumes">Spiced Potatoes (150 kcal, 2g protein) <input type="number" id="meal-lunch-legumes-14-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="legumes">Fried Potatoes (200 kcal, 3g protein) <input type="number" id="meal-lunch-legumes-15-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="legumes">Potatoes with Turmeric (160 kcal, 2g protein) <input type="number" id="meal-lunch-legumes-16-weight" min="0" placeholder="Amount (g)"></div>
+                    </div>
+                    <div class="meal-category">
+                        <h4>Vegetables</h4>
+                        <input type="search" class="search-bar" placeholder="Search for vegetables..." oninput="filterMeals('lunch', 'vegetables')">
+                        <div class="meal-item" data-category="vegetables">Green Salad (30 kcal, 1g protein) <input type="number" id="meal-lunch-vegetables-0-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="vegetables">Cooked Broccoli (50 kcal, 3g protein) <input type="number" id="meal-lunch-vegetables-1-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="vegetables">Stuffed Zucchini (140 kcal, 4g protein) <input type="number" id="meal-lunch-vegetables-2-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="vegetables">Broccoli with Garlic (70 kcal, 3g protein) <input type="number" id="meal-lunch-vegetables-3-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="vegetables">Grilled Broccoli (60 kcal, 3g protein) <input type="number" id="meal-lunch-vegetables-4-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="vegetables">Zucchini with Oil (100 kcal, 2g protein) <input type="number" id="meal-lunch-vegetables-5-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="vegetables">Cucumber Salad (20 kcal, 1g protein) <input type="number" id="meal-lunch-vegetables-6-weight" min="0" placeholder="Amount (g)"></div>
+                    </div>
+                    <button class="btn meal-btn" data-meal="lunch">Select Lunch</button>
+                    <p>Remaining Calories: <span id="remainingCaloriesLunch">0</span> kcal</p>
+                </div>
+            </div>
+
+            <div class="meal-section" id="dinnerSection">
+                <h3>Dinner</h3>
+                <div class="meal-options">
+                    <div class="meal-category">
+                        <h4>Meat and Proteins</h4>
+                        <input type="search" class="search-bar" placeholder="Search for meat..." oninput="filterMeals('dinner', 'meats')">
+                        <div class="meal-item" data-category="meats">Beef Steak (300 kcal, 28g protein) <input type="number" id="meal-dinner-meats-0-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="meats">Grilled Chicken (240 kcal, 27g protein) <input type="number" id="meal-dinner-meats-1-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="meats">Grilled Salmon (250 kcal, 25g protein) <input type="number" id="meal-dinner-meats-2-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="meats">Chicken Steak (180 kcal, 30g protein) <input type="number" id="meal-dinner-meats-3-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="meats">Steak with Pepper (320 kcal, 29g protein) <input type="number" id="meal-dinner-meats-4-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="meats">Chicken with Olives (250 kcal, 26g protein) <input type="number" id="meal-dinner-meats-5-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="meats">Spiced Salmon (260 kcal, 25g protein) <input type="number" id="meal-dinner-meats-6-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="meats">Steak with Cumin (300 kcal, 28g protein) <input type="number" id="meal-dinner-meats-7-weight" min="0" placeholder="Amount (g)"></div>
+                    </div>
+                    <div class="meal-category">
+                        <h4>Legumes and Starches</h4>
+                        <input type="search" class="search-bar" placeholder="Search for legumes..." oninput="filterMeals('dinner', 'legumes')">
+                        <div class="meal-item" data-category="legumes">Mashed Potatoes (150 kcal, 2g protein) <input type="number" id="meal-dinner-legumes-0-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="legumes">Sweet Potatoes (100 kcal, 2g protein) <input type="number" id="meal-dinner-legumes-1-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="legumes">Lentil Soup (120 kcal, 5g protein) <input type="number" id="meal-dinner-legumes-2-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="legumes">Baked Potatoes (130 kcal, 2g protein) <input type="number" id="meal-dinner-legumes-3-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="legumes">Potatoes with Butter (180 kcal, 2g protein) <input type="number" id="meal-dinner-legumes-4-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="legumes">Spiced Potatoes (160 kcal, 2g protein) <input type="number" id="meal-dinner-legumes-5-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="legumes">Potatoes with Turmeric (160 kcal, 2g protein) <input type="number" id="meal-dinner-legumes-6-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="legumes">Potatoes with Oil (170 kcal, 2g protein) <input type="number" id="meal-dinner-legumes-7-weight" min="0" placeholder="Amount (g)"></div>
+                    </div>
+                    <div class="meal-category">
+                        <h4>Vegetables</h4>
+                        <input type="search" class="search-bar" placeholder="Search for vegetables..." oninput="filterMeals('dinner', 'vegetables')">
+                        <div class="meal-item" data-category="vegetables">Sautéed Broccoli (60 kcal, 3g protein) <input type="number" id="meal-dinner-vegetables-0-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="vegetables">Cooked Spinach (40 kcal, 3g protein) <input type="number" id="meal-dinner-vegetables-1-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="vegetables">Vegetable Soup (80 kcal, 2g protein) <input type="number" id="meal-dinner-vegetables-2-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="vegetables">Broccoli with Lemon (70 kcal, 3g protein) <input type="number" id="meal-dinner-vegetables-3-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="vegetables">Spinach with Garlic (50 kcal, 3g protein) <input type="number" id="meal-dinner-vegetables-4-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="vegetables">Broccoli with Cheese (100 kcal, 5g protein) <input type="number" id="meal-dinner-vegetables-5-weight" min="0" placeholder="Amount (g)"></div>
+                        <div class="meal-item" data-category="vegetables">Tomato Soup (70 kcal, 2g protein) <input type="number" id="meal-dinner-vegetables-6-weight" min="0" placeholder="Amount (g)"></div>
+                    </div>
+                    <button class="btn meal-btn" data-meal="dinner">Select Dinner</button>
+                    <p>Remaining Calories: <span id="remainingCaloriesDinner">0</span> kcal</p>
+                </div>
+            </div>
+
+
+            <div id="vitaminsSection" class="hidden">
+                <h3 id="vitaminsTitle">Your Vitamin and Mineral Needs</h3>
+                <div class="results-grid">
+                    <div class="result-item">
+                        <span class="result-label">Vitamin C:</span>
+                        <span id="vitaminC">0</span> mg
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Vitamin D:</span>
+                        <span id="vitaminD">0</span> µg
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Calcium:</span>
+                        <span id="calcium">0</span> mg
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Iron:</span>
+                        <span id="iron">0</span> mg
+                    </div>
+                </div>
+            </div>
+
+            <div id="fitnessPlanSection" class="hidden">
+                <h3 id="fitnessTitle">Workout Plan</h3>
+                <div class="form-group">
+                    <label id="gymDaysLabel">How many days per week will you go to the gym?</label>
+                    <select id="gymDays">
+                        <option value="2">2 days</option>
+                        <option value="3">3 days</option>
+                        <option value="4">4 days</option>
+                        <option value="5">5 days</option>
+                    </select>
+                    <button id="showPlanBtn" class="btn">Show Plan / اعرض الخطة</button>
+                </div>
+                
+                <div id="trainingSystem" class="hidden">
+                    <h4 id="systemLabel">Your Training System:</h4>
+                    <p id="systemDescription"></p>
+                </div>
+                
+                <div id="supplementsSection" class="hidden">
+                    <h4 id="suppLabel">Suggested Sports Supplements:</h4>
+                    <ul id="supplementsList"></ul>
+                </div>
+                
+                <div id="muscleGroupsSection" class="hidden">
+                    <h4 id="muscleLabel">What will you train today?</h4>
+                    <div class="muscle-groups">
+                        <label><input type="checkbox" name="muscleGroup" value="chest"> Chest</label>
+                        <label><input type="checkbox" name="muscleGroup" value="back"> Back</label>
+                        <label><input type="checkbox" name="muscleGroup" value="shoulder"> Shoulders</label>
+                        <label><input type="checkbox" name="muscleGroup" value="arm"> Arms</label>
+                        <label><input type="checkbox" name="muscleGroup" value="leg"> Legs</label>
+                    </div>
+                    <button id="showExercisesBtn" class="btn">Show Exercises / اعرض التمارين</button>
+                </div>
+                
+                <div id="exercisesSection" class="hidden"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="dateTime" style="text-align: center; margin-top: 15px; font-size: 12px; color: #7f8c8d;"></div>
+
+    <script src="D:\java project\script\scrip.js"></script>
+    
+</body>
+</html>
+
+
+
+
+
+
+
