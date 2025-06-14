@@ -36,7 +36,7 @@ body {
 
 /* حاوية رئيسية */
 .container {
-    max-width: 1500px;
+    max-width: 1500px; /* عرض أكبر للحاوية الرئيسية */
     margin: 40px auto;
     padding: 40px;
     background: rgba(17, 24, 39, 0.85);
@@ -105,16 +105,16 @@ header h3 {
 
 /* صفحة إدخال البيانات (#user-info) */
 #user-info {
-    max-width: 1300px;
+    max-width: 1300px; /* عرض أكبر بكتير */
     margin: 60px auto;
-    padding: 60px;
+    padding: 60px; /* مسافات داخلية أكبر */
     background: rgba(31, 41, 55, 0.95);
     border-radius: 16px;
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
 }
 
 #user-info h2 {
-    font-size: 2.4rem;
+    font-size: 2.4rem; /* عنوان أكبر */
     text-align: center;
     color: #60a5fa;
     margin-bottom: 30px;
@@ -125,7 +125,7 @@ header h3 {
 }
 
 #user-info .form-group label {
-    font-size: 1.4rem;
+    font-size: 1.4rem; /* خط أكبر */
     font-weight: 500;
     color: #e5e7eb;
     margin-bottom: 15px;
@@ -133,8 +133,8 @@ header h3 {
 
 #user-info .form-group input,
 #user-info .form-group select {
-    padding: 18px;
-    font-size: 1.3rem;
+    padding: 18px; /* حقل أكبر */
+    font-size: 1.3rem; /* خط أكبر */
     border: 1px solid #4b5563;
     border-radius: 10px;
     background: #1f2937;
@@ -149,17 +149,17 @@ header h3 {
 
 /* صفحة تسجيل الدخول (#loginContainer) */
 #loginContainer {
-    max-width: 800px;
+    max-width: 900px; /* عرض أكبر */
     margin: 80px auto;
-    padding: 70px;
+    padding: 80px; /* مسافات داخلية أكبر */
     background: rgba(31, 41, 55, 0.95);
     border-radius: 20px;
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 15px 50px rgba(173, 158, 158, 0.4);
     text-align: center;
 }
 
 #loginContainer h2 {
-    font-size: 2.6rem;
+    font-size: 2.6rem; /* عنوان أكبر */
     color: #60a5fa;
     margin-bottom: 35px;
 }
@@ -169,18 +169,18 @@ header h3 {
 }
 
 #loginContainer .form-group label {
-    font-size: 1.5rem;
+    font-size: 1.8rem; /* خط أكبر */
     font-weight: 500;
     color: #e5e7eb;
     margin-bottom: 18px;
 }
 
 #loginContainer .form-group input {
-    padding: 20px;
-    font-size: 1.4rem;
+    padding: 20px; /* حقل أكبر */
+    font-size: 1.6rem; /* خط أكبر */
     border: 1px solid #4b5563;
     border-radius: 10px;
-    background: #1f2937;
+    background: #555f6e;
     color: #e5e7eb;
 }
 
@@ -190,8 +190,8 @@ header h3 {
 }
 
 #loginContainer .btn {
-    padding: 20px 40px;
-    font-size: 1.4rem;
+    padding: 20px 40px; /* زر أكبر */
+    font-size: 1.4rem; /* خط أكبر */
     border-radius: 10px;
     background: #2563eb;
     transition: background 0.3s, box-shadow 0.3s;
@@ -205,55 +205,32 @@ header h3 {
 /* قوائم الوجبات */
 .meal-options {
     margin-top: 20px;
-    max-height: 600px;
+    max-height: 400px; /* ارتفاع أكبر */
     overflow-y: auto;
-    padding: 20px;
+    padding: 20px; /* مسافات أكبر */
     background: #1f2937;
     border-radius: 8px;
     border: 1px solid #4b5563;
     -webkit-overflow-scrolling: touch;
     font-size: 1.1rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
 }
 
 .meal-item {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 15px;
-    background: rgba(31, 41, 55, 0.95);
-    border: 1px solid #4b5563;
-    border-radius: 8px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    font-size: 1.2rem;
-    color: #e5e7eb;
-}
-
-.meal-item:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
-}
-
-.meal-icon {
-    font-size: 1.5rem;
-    margin-right: 10px;
-    color: #60a5fa;
-}
-
-.meal-item .meal-details {
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
+    gap: 20px;
+    flex-wrap: wrap;
+    color: #e5e7eb;
+    font-size: 1.2rem;
 }
 
 .meal-item input {
-    width: 100%;
-    padding: 10px;
+    width: 240px; /* حقل أكبر */
+    padding: 12px;
     border-radius: 6px;
     border: 1px solid #4b5563;
-    background: #111827;
+    background: #737b8b;
     color: #e5e7eb;
     font-size: 1.1rem;
 }
@@ -262,14 +239,6 @@ header h3 {
     margin-bottom: 30px;
     color: #e5e7eb;
     font-size: 1.2rem;
-}
-
-.meal-category h4 {
-    font-size: 1.4rem;
-    color: #60a5fa;
-    margin-bottom: 15px;
-    border-bottom: 1px solid #2563eb;
-    padding-bottom: 8px;
 }
 
 /* نماذج عامة */
@@ -345,7 +314,7 @@ header h3 {
 }
 
 .result-item {
-    background: #1f2937;
+    background: #6a7a91;
     padding: 15px;
     border-radius: 8px;
     text-align: center;
@@ -366,7 +335,7 @@ header h3 {
     border: 1px solid #4b5563;
     border-radius: 8px;
     font-size: 1.1rem;
-    background: #1f2937;
+    background: #55657c;
     color: #e5e7eb;
 }
 
@@ -499,28 +468,24 @@ header h3 {
     }
 
     .meal-options {
-        grid-template-columns: 1fr;
         font-size: 1rem;
         padding: 15px;
-        max-height: 500px;
+        max-height: 350px;
     }
 
     .meal-item {
         font-size: 1.1rem;
-        padding: 10px;
-    }
-
-    .meal-icon {
-        font-size: 1.3rem;
-        margin-right: 8px;
+        gap: 15px;
+        margin-bottom: 15px;
     }
 
     .meal-item input {
+        width: 100px;
         font-size: 1rem;
     }
 
-    .meal-category h4 {
-        font-size: 1.2rem;
+    .meal-category {
+        font-size: 1.1rem;
     }
 
     .btn {
